@@ -1,0 +1,42 @@
+# Dependencies (installed fresh inside the image)
+node_modules/
+
+# Environment secrets — NEVER bake into the image
+.env
+.env.*
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Git metadata
+.git/
+.gitignore
+
+# IDE and OS noise
+.vscode/
+.idea/
+.DS_Store
+*.bak
+
+# Logs
+*.log
+logs/
+
+# Neon Local persistent branch metadata
+.neon_local/
+
+# Test / coverage artifacts
+coverage/
+dist/
+
+# Prettier / ESLint config (not needed at runtime)
+.prettierrc
+.prettierignore
+eslint.config.js
+
+# This file itself
+.dockerignore
+
+# Docker Compose files (not needed inside the container)
+docker-compose*.yml

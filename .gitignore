@@ -13,3 +13,6 @@ coverage
 .vscode
 .DS_Store
 *.bak
+
+# Neon Local persistent branch metadata (git-branch-per-branch mode)
+.neon_local/
