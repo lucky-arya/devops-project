@@ -1,6 +1,5 @@
 
 services:
-  # Application Service for Production
   app:
     build:
       context: .
@@ -14,6 +13,8 @@ services:
     networks:
       - acquisition-production
     restart: unless-stopped
+    # Run DB migrations then start the server
+    command: sh -c "node_modules/.bin/drizzle-kit migrate && node src/index.js"
     healthcheck:
       test:
         [
@@ -26,19 +27,6 @@ services:
       timeout: 10s
       retries: 3
       start_period: 30s
-    deploy:
-      resources:
-        limits:
-          memory: 512M
-          cpus: '0.5'
-        reservations:
-          memory: 256M
-          cpus: '0.25'
-      restart_policy:
-        condition: on-failure
-        delay: 5s
-        max_attempts: 3
-        window: 120s
     logging:
       driver: 'json-file'
       options:
@@ -51,7 +39,3 @@ networks:
     ipam:
       config:
         - subnet: 172.20.0.0/16
-# Optional: External networks for production deployments
-# networks:
-#   acquisition-production:
-#     external: true
