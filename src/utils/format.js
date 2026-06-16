@@ -1,4 +1,4 @@
-export const formatValidationErrors = (errors)=>{
+export const formatValidationError = (errors)=>{
     if(!errors || !errors.issues) return 'validation failed';
     if(Array.isArray(errors.issues)){
         return errors.issues.map(issue=> `${issue.path.join('.')} : ${issue.message}`).join(', ');

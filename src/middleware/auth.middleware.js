@@ -20,7 +20,7 @@ export const authenticateToken = (req, res, next) => {
   } catch (e) {
     logger.error('Authentication error:', e);
 
-    if (e.message === 'Failed to authenticate token') {
+    if (e.message === 'Failed to verify token') {
       return res.status(401).json({
         error: 'Authentication failed',
         message: 'Invalid or expired token',
